@@ -57,6 +57,107 @@ model Token {
   @@unique([hashedToken, type])
 }
 
+model Application {
+  id                           Int       @id @default(autoincrement())
+  createdAt                    DateTime  @default(now())
+  updatedAt                    DateTime  @updatedAt
+  name                         String
+  birthDate                    DateTime
+  age                          Int
+  socialNumber                 Int
+  sex                          String
+  address                      String
+  city                         String
+  state                        String
+  zipcode                      String
+  email                        String
+  homePhone                    Int?
+  mobilePhone                  Int?
+  carrier                      String?
+  enableTextCommunication      Boolean
+  maritalStatus                String
+  occupation                   String
+  employer                     String
+  workPhone                    String?
+  spouseName                   String?
+  spouseOccupation             String?
+  spouseEmployer               String?
+  emergencyContactName         String
+  emergencyContactNumber       Int
+  emergencyContactRelationship String
+  doYouHaveInsurance           Boolean
+  insurancePolicyHolder        String?
+  policyHolderBirthdate        DateTime?
+  relationshipToPolicyHolder   String?
+  anyDependentsCovered         Boolean
+
+  // Activity Level
+  restrictedActivity      String
+  currentActivityLevel    String
+  usualActivityLevel      String
+  injuryBecauseOfAccident Boolean
+  injuryToSpine           String
+
+  // Past History
+  haveSufferedInPast   Boolean
+  sufferedInPastCount  Int?
+  howDidInjuryHappen   String?
+  otherFormOfTreatment Boolean
+  whatTypeOfTreatment  String?
+  whoProvidedTreatment String?
+  whenWasTreatment     DateTime?
+  resultsOfTreatmenet  String?
+  unfavorableReason    String?
+  stressfulJobs        String?
+
+  dependent      Dependent[]
+  reasonForVisit ReasonForVisit[]
+}
+
+model Dependent {
+  id           Int      @id @default(autoincrement())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  name         String
+  birthDate    DateTime
+  relationship DateTime
+
+  application   Application @relation(fields: [applicationId], references: [id])
+  applicationId Int
+}
+
+model ReasonForVisit {
+  id                       Int       @id @default(autoincrement())
+  createdAt                DateTime  @default(now())
+  updatedAt                DateTime  @updatedAt
+  name                     String
+  painLevel                Int
+  whenProblemStart         DateTime
+  whenProblemAtWorst       String
+  howLongDoesProblemLast   String
+  howDidInjuryHappen       String
+  injuryEverBeenTreated    Boolean
+  whereInjuryWasTreated    String?
+  whenWasInjuryWasTreated  DateTime?
+  howLongWereYouTreatedFor String?
+  treatedResults           String?
+  previousChiropractorName String?
+  symptoms                 String
+  symptomsArea             String
+  whatRelievesSymptom      String
+  whatMakeSymptomWorse     String
+
+  application   Application @relation(fields: [applicationId], references: [id])
+  applicationId Int
+}
+
+model Condition {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String
+}
+
 // NOTE: It's highly recommended to use an enum for the token type
 //       but enums only work in Postgres.
 //       See: https://blitzjs.com/docs/database-overview#switch-to-postgresql
