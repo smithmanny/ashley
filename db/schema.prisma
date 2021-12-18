@@ -110,6 +110,8 @@ model Application {
   unfavorableReason    String?
   stressfulJobs        String?
 
+  // Restricted Activity
+
   dependent      Dependent[]
   reasonForVisit ReasonForVisit[]
 }
@@ -120,7 +122,7 @@ model Dependent {
   updatedAt    DateTime @updatedAt
   name         String
   birthDate    DateTime
-  relationship DateTime
+  relationship String
 
   application   Application @relation(fields: [applicationId], references: [id])
   applicationId Int

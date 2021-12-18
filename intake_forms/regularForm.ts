@@ -1,5 +1,3 @@
-import { Checkbox, Select, TextField } from "app/core/components/form"
-
 const fields = [
   {
     name: "name",
@@ -9,7 +7,7 @@ const fields = [
       xs: 12,
       md: 6,
     },
-    component: TextField,
+    component: "TextField",
   },
   {
     name: "birthdate",
@@ -19,7 +17,7 @@ const fields = [
       xs: 12,
       md: 6,
     },
-    component: TextField,
+    component: "TextField",
   },
   {
     name: "age",
@@ -29,7 +27,7 @@ const fields = [
       xs: 12,
       md: 6,
     },
-    component: TextField,
+    component: "TextField",
   },
   {
     name: "sex",
@@ -43,15 +41,16 @@ const fields = [
       xs: 12,
       md: 6,
     },
-    component: Select,
+    component: "Select",
   },
   {
     name: "socialNumber",
     label: "SSN #",
+    required: true,
     size: {
       xs: 12,
     },
-    component: TextField,
+    component: "TextField",
   },
   {
     name: "address",
@@ -61,7 +60,7 @@ const fields = [
       xs: 12,
       md: 6,
     },
-    component: TextField,
+    component: "TextField",
   },
   {
     name: "city",
@@ -71,7 +70,7 @@ const fields = [
       xs: 12,
       md: 6,
     },
-    component: TextField,
+    component: "TextField",
   },
   {
     name: "state",
@@ -81,7 +80,7 @@ const fields = [
       xs: 12,
       md: 6,
     },
-    component: TextField,
+    component: "TextField",
   },
   {
     name: "zipcode",
@@ -92,7 +91,7 @@ const fields = [
       xs: 12,
       md: 6,
     },
-    component: TextField,
+    component: "TextField",
   },
   {
     name: "email",
@@ -101,7 +100,7 @@ const fields = [
     size: {
       xs: 12,
     },
-    component: TextField,
+    component: "TextField",
   },
   {
     name: "homePhone",
@@ -110,7 +109,7 @@ const fields = [
       xs: 12,
       md: 6,
     },
-    component: TextField,
+    component: "TextField",
   },
   {
     name: "mobilePhone",
@@ -120,7 +119,7 @@ const fields = [
       xs: 12,
       md: 6,
     },
-    component: TextField,
+    component: "TextField",
   },
   {
     name: "carrier",
@@ -129,20 +128,185 @@ const fields = [
       xs: 12,
       md: 6,
     },
-    component: TextField,
+    component: "TextField",
+  },
+  {
+    name: "workPhone",
+    label: "Work Phone",
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "TextField",
   },
   {
     name: "enableTextCommunication",
-    label: "Would you like to receive appointment reminders via text messages ",
+    label:
+      "Would you like the convenience of text messages with appointment reminders and health information?",
+    required: true,
     items: [
       { label: "Yes", value: true },
       { label: "No", value: false },
     ],
     size: {
       xs: 12,
+    },
+    component: "Checkbox",
+  },
+  {
+    name: "maritalStatus",
+    label: "Marital Status",
+    required: true,
+    items: [
+      { key: "Single", value: "single" },
+      { key: "Married", value: "married" },
+    ],
+    size: {
+      xs: 12,
+    },
+    component: "Select",
+  },
+  {
+    name: "occupation",
+    label: "Your Occupation",
+    size: {
+      xs: 12,
       md: 6,
     },
-    component: Checkbox,
+    component: "TextField",
+  },
+  {
+    name: "employer",
+    label: "Your Employer",
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "TextField",
+  },
+  {
+    name: "spouseName",
+    label: "Spouse's Name",
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "TextField",
+  },
+  {
+    name: "spouseOccupation",
+    label: "Spouse's Occupation",
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "TextField",
+  },
+  {
+    name: "spouseEmployer",
+    label: "Spouse's Employer",
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "TextField",
+  },
+  {
+    label: "Emergency Contact Information",
+  },
+  {
+    name: "emergencyContactName",
+    label: "Emergency Contact Name",
+    required: true,
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "TextField",
+  },
+  {
+    name: "emergencyContactNumber",
+    label: "Emergency Contact #",
+    required: true,
+    type: "number",
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "TextField",
+  },
+  {
+    name: "emergencyContactRelationship",
+    label: "Relationship to emergency contact",
+    required: true,
+    size: {
+      xs: 12,
+    },
+    component: "TextField",
+  },
+  {
+    label: "Insurance Information",
+  },
+  {
+    name: "doYouHaveInsurance",
+    label: "Do you have insurance?",
+    required: true,
+    items: [
+      { key: "Yes", value: true },
+      { key: "No", value: false },
+    ],
+    size: {
+      xs: 12,
+    },
+    component: "Select",
+  },
+  {
+    name: "insurancePolicyHolder",
+    label: "Insurance Policy Holder",
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "TextField",
+  },
+  {
+    name: "policyHolderBirthdate",
+    label: "Policy Holder D.O.B.",
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "DatePicker",
+  },
+  {
+    name: "relationshipToPolicyHolder",
+    label: "Relationship to Policy Holder",
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "TextField",
+  },
+  {
+    name: "anyDependentsCovered",
+    label: "Are there any spouse/dependents covered?",
+    items: [
+      { key: "Yes", value: true },
+      { key: "No", value: false },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "dependent",
+    customComponent: "DependentsComponent",
+  },
+  {
+    name: "reasonForVisit",
+    customComponent: "ReasonForVisitComponent",
   },
 ]
 
