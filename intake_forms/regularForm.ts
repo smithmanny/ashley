@@ -344,7 +344,8 @@ const fields = [
   },
   {
     name: "injuryToSpine",
-    label:
+    label: "Identify any other injury(s)",
+    helperText:
       "Identify any other injury(s) to your spine, minor or major, that the doctor should know about",
     size: {
       xs: 12,
@@ -359,7 +360,8 @@ const fields = [
   // Past History
   {
     name: "haveSufferedInPast",
-    label: "Have you suffered with any of this or a similar problem in the past?",
+    label: "Any problems in the past?",
+    helperText: "Have you suffered with any of this or a similar problem in the past?",
     required: true,
     items: [
       { key: "Yes", value: true },
@@ -455,7 +457,8 @@ const fields = [
   },
   {
     name: "stressfulJobs",
-    label:
+    label: "Identify any stressful jobs",
+    helperText:
       "Please identify any and all types of jobs you have had in the past that have imposed any physical stress on you or your body",
     size: {
       xs: 12,
@@ -701,6 +704,66 @@ const fields = [
       md: 6,
     },
     component: "Select",
+  },
+  {
+    label: "Famiily History",
+  },
+  {
+    name: "familyHistory.familyMemberSufferWithSameCondition",
+    label: "Anybody in your family with same conditions?",
+    helperText: "Does anyone in your family suffer with the same condition(s)?",
+    items: [
+      { key: "Yes", value: true },
+      { key: "No", value: false },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "familyHistory.familyMemberWithSameCondition",
+    label: "If yes whom?",
+    items: [
+      { key: "Grandmother", value: "grandmother" },
+      { key: "Grandfather", value: "grandfather" },
+      { key: "Mother", value: "mother" },
+      { key: "Father", value: "father" },
+      { key: "Sister", value: "sister" },
+      { key: "Brother", value: "brother" },
+      { key: "Son", value: "son" },
+      { key: "Dauther", value: "dauther" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "familyHistory.familyMemberEverBeenTreated",
+    label: "Have they ever been treated for their condition?",
+    items: [
+      { key: "No", value: false },
+      { key: "Yes", value: true },
+      { key: "IDK", value: "idk" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "familyHistory.hereditaryConditions",
+    label: "Any other hereditary conditions?",
+    helperText: "Any other hereditary conditions the doctor should be aware of?",
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "TextField",
   },
 ]
 
