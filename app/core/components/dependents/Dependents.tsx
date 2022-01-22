@@ -32,20 +32,20 @@ const Dependents = () => {
           <ListOfDependents dependents={dependents} />
         </Grid>
       )}
-      <Grid item xs={12}>
-        <TextField name="dependent.name" label="Dependent Name" />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <DatePicker
-          name="dependent.birthDate"
-          label="Dependent D.O.B"
-          format="MMMM d, yyyy"
-          disableFuture
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <TextField name="dependent.relationship" label="Dependent Relationship" />
-      </Grid>
+
+      <TextField name="dependent.name" label="Dependent Name" xs={12} />
+
+      <DatePicker
+        name="dependent.birthDate"
+        label="Dependent D.O.B"
+        format="MMMM d, yyyy"
+        disableFuture
+        xs={12}
+        md={6}
+      />
+
+      <TextField name="dependent.relationship" label="Dependent Relationship" xs={12} md={6} />
+
       <Grid item xs={12} md={6}>
         <Button
           disabled={

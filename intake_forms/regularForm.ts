@@ -308,6 +308,400 @@ const fields = [
     name: "reasonForVisit",
     customComponent: "ReasonForVisitComponent",
   },
+  {
+    name: "divider",
+    customComponent: "DividerComponent",
+  },
+  {
+    name: "restrictedActivity",
+    label: "List Restrcited Activity",
+    size: {
+      xs: 12,
+    },
+    multiline: true,
+    minRows: 2,
+    component: "TextField",
+  },
+  {
+    name: "currentActivityLevel",
+    label: "Current Activity Level",
+    size: {
+      xs: 12,
+    },
+    multiline: true,
+    minRows: 2,
+    component: "TextField",
+  },
+  {
+    name: "usualActivityLevel",
+    label: "Usual Activity Level",
+    size: {
+      xs: 12,
+    },
+    multiline: true,
+    minRows: 2,
+    component: "TextField",
+  },
+  {
+    name: "injuryToSpine",
+    label:
+      "Identify any other injury(s) to your spine, minor or major, that the doctor should know about",
+    size: {
+      xs: 12,
+    },
+    multiline: true,
+    minRows: 2,
+    component: "TextField",
+  },
+  {
+    label: "Past History",
+  },
+  // Past History
+  {
+    name: "haveSufferedInPast",
+    label: "Have you suffered with any of this or a similar problem in the past?",
+    required: true,
+    items: [
+      { key: "Yes", value: true },
+      { key: "No", value: false },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "sufferedInPastCount",
+    label: "If yes, how many times?",
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "TextField",
+  },
+  {
+    name: "howDidInjuryHappen",
+    label: "How did the injury happen?",
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "TextField",
+  },
+  {
+    name: "otherFormOfTreatment",
+    label: "Other forms of treatmenet tried?",
+    required: true,
+    items: [
+      { key: "Yes", value: true },
+      { key: "No", value: false },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "whatTypeOfTreatment",
+    label: "If yes, please state what type of treatment",
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "TextField",
+  },
+  {
+    name: "whoProvidedTreatment",
+    label: "Who provided it?",
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "TextField",
+  },
+  {
+    name: "whenWasTreatment",
+    label: "Who provided it?",
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "TextField",
+  },
+  {
+    name: "resultsOfTreatmenet",
+    label: "What were the results?",
+    items: [
+      { key: "Favorable", value: "favorable" },
+      { key: "Unfavorable", value: "unfavorable" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "unfavorableReason",
+    label: "If results were unfavorable please explain",
+    size: {
+      xs: 12,
+    },
+    multiline: true,
+    minRows: 2,
+    component: "TextField",
+  },
+  {
+    name: "stressfulJobs",
+    label:
+      "Please identify any and all types of jobs you have had in the past that have imposed any physical stress on you or your body",
+    size: {
+      xs: 12,
+    },
+    multiline: true,
+    minRows: 2,
+    component: "TextField",
+  },
+  // Conditions/Injuries
+  {
+    label: "Have you been diagnosed with any of the following conditions",
+  },
+  {
+    name: "conditionBrokenBone",
+    label: "Broken Bone",
+    items: [
+      { key: "Past", value: "past" },
+      { key: "Currently", value: "currently" },
+      { key: "Never", value: "never" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "conditionDislocation",
+    label: "Dislocations",
+    items: [
+      { key: "Past", value: "past" },
+      { key: "Currently", value: "currently" },
+      { key: "Never", value: "never" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "conditionTumors",
+    label: "Tumors",
+    items: [
+      { key: "Past", value: "past" },
+      { key: "Currently", value: "currently" },
+      { key: "Never", value: "never" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "conditionRheumatoidArthritis",
+    label: "Rheumatoid Arthritis",
+    items: [
+      { key: "Past", value: "past" },
+      { key: "Currently", value: "currently" },
+      { key: "Never", value: "never" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "conditionFracture",
+    label: "Fracture",
+    items: [
+      { key: "Past", value: "past" },
+      { key: "Currently", value: "currently" },
+      { key: "Never", value: "never" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "conditionDisability",
+    label: "Disability",
+    items: [
+      { key: "Past", value: "past" },
+      { key: "Currently", value: "currently" },
+      { key: "Never", value: "never" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "conditionCancer",
+    label: "Cancer",
+    items: [
+      { key: "Past", value: "past" },
+      { key: "Currently", value: "currently" },
+      { key: "Never", value: "never" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "conditionHeartAttack",
+    label: "Heart Attack",
+    items: [
+      { key: "Past", value: "past" },
+      { key: "Currently", value: "currently" },
+      { key: "Never", value: "never" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "conditionOsteoArthritis",
+    label: "Osteo Arthritis",
+    items: [
+      { key: "Past", value: "past" },
+      { key: "Currently", value: "currently" },
+      { key: "Never", value: "never" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "conditionDiabetes",
+    label: "Diabetes",
+    items: [
+      { key: "Past", value: "past" },
+      { key: "Currently", value: "currently" },
+      { key: "Never", value: "never" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "conditionCerebralVascular",
+    label: "Cerebral Vascular",
+    items: [
+      { key: "Past", value: "past" },
+      { key: "Currently", value: "currently" },
+      { key: "Never", value: "never" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "conditionOtherSeriousConditions",
+    label: "Other serious conditions",
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    multiline: true,
+    component: "TextField",
+  },
+  {
+    label:
+      "Please identify ALL PAST and any CURRENT conditions you feel may be contributing to your present problems",
+  },
+  {
+    name: "condition",
+    customComponent: "ConditionComponent",
+  },
+  {
+    label: "Social History",
+  },
+  {
+    name: "smoking.type",
+    label: "Smoking",
+    items: [
+      { key: "Cigars", value: "cigars" },
+      { key: "Pipe", value: "pipe" },
+      { key: "Cigarettes", value: "cigarettes" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "smoking.howOften",
+    label: "Smoke how often?",
+    items: [
+      { key: "Daily", value: "daily" },
+      { key: "Weekends", value: "weekends" },
+      { key: "Occasionaly", value: "occasionaly" },
+      { key: "Never", value: "never" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "alcoholicBeverage.consumption",
+    label: "Alcoholic Consumption",
+    items: [
+      { key: "Daily", value: "daily" },
+      { key: "Weekends", value: "weekends" },
+      { key: "Occasionaly", value: "occasionaly" },
+      { key: "Never", value: "never" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
+  {
+    name: "recreationalDrugs.consumption",
+    label: "Recreational Drugs Consumption",
+    items: [
+      { key: "Daily", value: "daily" },
+      { key: "Weekends", value: "weekends" },
+      { key: "Occasionaly", value: "occasionaly" },
+      { key: "Never", value: "never" },
+    ],
+    size: {
+      xs: 12,
+      md: 6,
+    },
+    component: "Select",
+  },
 ]
 
 export default fields

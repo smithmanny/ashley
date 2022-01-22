@@ -92,28 +92,49 @@ model Application {
   anyDependentsCovered         Boolean
 
   // Activity Level
-  restrictedActivity      String
-  currentActivityLevel    String
-  usualActivityLevel      String
+  restrictedActivity      String?
+  currentActivityLevel    String?
+  usualActivityLevel      String?
   injuryBecauseOfAccident Boolean
-  injuryToSpine           String
+  injuryToSpine           String?
 
   // Past History
-  haveSufferedInPast   Boolean
-  sufferedInPastCount  Int?
-  howDidInjuryHappen   String?
-  otherFormOfTreatment Boolean
-  whatTypeOfTreatment  String?
-  whoProvidedTreatment String?
-  whenWasTreatment     DateTime?
-  resultsOfTreatmenet  String?
-  unfavorableReason    String?
-  stressfulJobs        String?
+  haveSufferedInPast              Boolean
+  sufferedInPastCount             Int?
+  howDidInjuryHappen              String?
+  otherFormOfTreatment            Boolean
+  whatTypeOfTreatment             String?
+  whoProvidedTreatment            String?
+  whenWasTreatment                String?
+  resultsOfTreatmenet             String?
+  unfavorableReason               String?
+  stressfulJobs                   String?
+  conditionBrokenBone             String?
+  conditionDislocation            String?
+  conditionTumors                 String?
+  conditionRheumatoidArthritis    String?
+  conditionFracture               String?
+  conditionDisability             String?
+  conditionCancer                 String?
+  conditionHeartAttack            String?
+  conditionOsteoArthritis         String?
+  conditionDiabetes               String?
+  conditionCerebralVascular       String?
+  conditionOtherSeriousConditions String?
 
-  // Restricted Activity
+  // Social History
+  smoking           Smoking?
+  alcoholicBeverage AlcoholicBeverage?
+  recreationalDrugs RecreationalDrugs?
+
+  // Family History
+  familyMemberSufferWithSameCondition Boolean
+  familyMemberWithSameCondition       String?
+  hereditaryConditions                Boolean
 
   dependent      Dependent[]
   reasonForVisit ReasonForVisit[]
+  conditions     Condition[]
 }
 
 model Dependent {
@@ -154,10 +175,48 @@ model ReasonForVisit {
 }
 
 model Condition {
+  id                 Int      @id @default(autoincrement())
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  type               String
+  name               String
+  howLongAgo         String
+  typeOfCareReceived String
+  byWhom             String
+
+  application   Application @relation(fields: [applicationId], references: [id])
+  applicationId Int
+}
+
+model Smoking {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  name      String
+  type      String
+  howOften  String
+
+  application   Application @relation(fields: [applicationId], references: [id])
+  applicationId Int         @unique
+}
+
+model AlcoholicBeverage {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  consumption String
+
+  application   Application @relation(fields: [applicationId], references: [id])
+  applicationId Int         @unique
+}
+
+model RecreationalDrugs {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  consumption String
+
+  application   Application @relation(fields: [applicationId], references: [id])
+  applicationId Int         @unique
 }
 
 // NOTE: It's highly recommended to use an enum for the token type

@@ -5,6 +5,7 @@ import { FORM_ERROR } from "final-form"
 import * as z from "zod"
 
 import Button from "../shared/Button"
+import Grid from "app/core/components/shared/Grid"
 
 export interface FormProps<S extends z.ZodType<any, any>>
   extends Omit<PropsWithoutRef<JSX.IntrinsicElements["form"]>, "onSubmit"> {
@@ -68,7 +69,9 @@ export function Form<S extends z.ZodType<any, any>>({
       onSubmit={_handleSubmit}
       render={({ handleSubmit, submitting, submitError }) => (
         <form onSubmit={handleSubmit} className="form" {...props}>
-          {children}
+          <Grid container spacing={2}>
+            {children}
+          </Grid>
 
           {submitError && (
             <div role="alert" style={{ color: "red" }}>
