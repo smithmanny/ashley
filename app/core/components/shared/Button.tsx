@@ -2,10 +2,20 @@ import MuiButton from "@mui/material/Button"
 import PropTypes from "prop-types"
 import IconButton from "@mui/material/IconButton"
 import DeleteIcon from "@mui/icons-material/Delete"
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf"
 
 const Button = (props) => {
   if (props.icon) {
-    let Component = <DeleteIcon />
+    let Component
+
+    switch (props.icon) {
+      case "pdf":
+        Component = <PictureAsPdfIcon />
+        break
+      default:
+        Component = <DeleteIcon />
+    }
+
     return <IconButton aria-label="delete">{Component}</IconButton>
   }
 

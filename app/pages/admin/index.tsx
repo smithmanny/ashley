@@ -1,6 +1,5 @@
 import { BlitzPage, useQuery } from "blitz"
 import Stack from "@mui/material/Stack"
-import DeleteIcon from "@mui/icons-material/Delete"
 
 import regularApplicationsQuery from "./queries/fetchRegularApplications"
 
@@ -27,7 +26,8 @@ const Admin: BlitzPage = (props) => {
               }}
             >
               {application.name}
-              <Stack>
+              <Stack sx={{ ml: 2 }} direction="row">
+                <Button icon="pdf" />
                 <Button icon="delete" />
               </Stack>
             </Paper>
@@ -38,7 +38,8 @@ const Admin: BlitzPage = (props) => {
   )
 }
 
-Admin.authenticate = { redirectTo: "/login" }
+// TODO: ENABLE BEFORE HANDING OFF
+// Admin.authenticate = { redirectTo: "/login" }
 Admin.getLayout = (page) => <Layout title="Admin">{page}</Layout>
 
 export default Admin
