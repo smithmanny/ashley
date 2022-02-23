@@ -38,7 +38,7 @@ const Admin: BlitzPage = (props) => {
   )
 }
 
-Admin.suppressFirstRenderFlicker = true
+Admin.authenticate = { redirectTo: "/login" }
 Admin.getLayout = (page) => <Layout title="Admin">{page}</Layout>
 
 export default Admin
