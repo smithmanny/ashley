@@ -74,8 +74,8 @@ model Application {
   carrier                      String?
   enableTextCommunication      Boolean
   maritalStatus                String
-  occupation                   String
-  employer                     String
+  occupation                   String?
+  employer                     String?
   workPhone                    String?
   spouseName                   String?
   spouseOccupation             String?
@@ -129,9 +129,9 @@ model Application {
   familyMemberSufferWithSameCondition Boolean
   familyMemberWithSameCondition       String?
   familyMemberEverBeenTreated         Boolean
-  hereditaryConditions                String
+  hereditaryConditions                String?
 
-  dependent      Dependent[]
+  dependents     Dependent[]
   reasonForVisit ReasonForVisit[]
   conditions     Condition[]
 }

@@ -20,15 +20,30 @@ const BasicTable = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.rows.map((row) => {
+          {props.rows.map((row, rowIndex) => {
             return (
               <TableRow key={row.name} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                 {Object.values(row).map((data: string, index) => {
+                  const rowLength = Object.values(row).length
+
                   if (index === 0) {
                     return (
                       <TableCell component="th" scope="row">
                         {data}
                       </TableCell>
+                    )
+                  }
+
+                  if (index + 1 === rowLength) {
+                    return (
+                      <React.Fragment>
+                        <TableCell key={index}>
+                          {data}
+                          <span onClick={() => props.deleteRow(rowIndex)} style={{ marginLeft: 8 }}>
+                            ❌
+                          </span>
+                        </TableCell>
+                      </React.Fragment>
                     )
                   }
 
@@ -43,7 +58,12 @@ const BasicTable = (props) => {
   )
 }
 
+BasicTable.defaulProps = {
+  deleteRow: {},
+}
+
 BasicTable.propTypes = {
+  deleteRow: PropTypes.func,
   headers: PropTypes.arrayOf(PropTypes.string).isRequired,
   rows: PropTypes.array.isRequired,
 }

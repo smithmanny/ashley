@@ -2,6 +2,7 @@ import { ReactNode, PropsWithoutRef } from "react"
 import { AuthenticationError, validateZodSchema } from "blitz"
 import { Form as FinalForm, FormProps as FinalFormProps } from "react-final-form"
 import { FORM_ERROR } from "final-form"
+import arrayMutators from "final-form-arrays"
 import * as z from "zod"
 
 import Button from "../shared/Button"
@@ -67,7 +68,10 @@ export function Form<S extends z.ZodType<any, any>>({
       initialValues={initialValues}
       validate={validateZodSchema(schema)}
       onSubmit={_handleSubmit}
-      render={({ handleSubmit, submitting, submitError }) => (
+      mutators={{
+        ...arrayMutators,
+      }}
+      render={({ handleSubmit, submitting, submitError, pristine }) => (
         <form onSubmit={handleSubmit} className="form" {...props}>
           <Grid container spacing={2}>
             {children}
@@ -80,7 +84,7 @@ export function Form<S extends z.ZodType<any, any>>({
           )}
 
           {submitText && (
-            <Button type="submit" disabled={submitting}>
+            <Button sx={{ my: 2 }} type="submit" disabled={submitting || pristine}>
               {submitText}
             </Button>
           )}

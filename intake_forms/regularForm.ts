@@ -10,14 +10,14 @@ const fields = [
     component: "TextField",
   },
   {
-    name: "birthdate",
+    name: "birthDate",
     label: "Birth Date",
     required: true,
     size: {
       xs: 12,
       md: 6,
     },
-    component: "TextField",
+    component: "DatePicker",
   },
   {
     name: "age",
@@ -27,6 +27,7 @@ const fields = [
       xs: 12,
       md: 6,
     },
+    type: "number",
     component: "TextField",
   },
   {
@@ -51,6 +52,7 @@ const fields = [
       xs: 12,
     },
     component: "TextField",
+    type: "number",
   },
   {
     name: "address",
@@ -110,6 +112,7 @@ const fields = [
       md: 6,
     },
     component: "TextField",
+    type: "number",
   },
   {
     name: "mobilePhone",
@@ -120,6 +123,7 @@ const fields = [
       md: 6,
     },
     component: "TextField",
+    type: "number",
   },
   {
     name: "carrier",
@@ -138,20 +142,22 @@ const fields = [
       md: 6,
     },
     component: "TextField",
+    type: "number",
   },
   {
     name: "enableTextCommunication",
-    label:
+    label: "Would you like appointment reminders and health information via text?",
+    helperText:
       "Would you like the convenience of text messages with appointment reminders and health information?",
     required: true,
     items: [
-      { label: "Yes", value: true },
-      { label: "No", value: false },
+      { key: "Yes", value: true },
+      { key: "No", value: false },
     ],
     size: {
       xs: 12,
     },
-    component: "Checkbox",
+    component: "Select",
   },
   {
     name: "maritalStatus",
@@ -244,6 +250,7 @@ const fields = [
     },
     component: "TextField",
   },
+  // Insurance Section
   {
     label: "Insurance Information",
   },
@@ -299,11 +306,13 @@ const fields = [
       md: 6,
     },
     component: "Select",
+    required: true,
   },
   {
     name: "dependent",
     customComponent: "DependentsComponent",
   },
+  // Conditions
   {
     name: "reasonForVisit",
     customComponent: "ReasonForVisitComponent",
@@ -311,6 +320,9 @@ const fields = [
   {
     name: "divider",
     customComponent: "DividerComponent",
+  },
+  {
+    label: "Activity Levels",
   },
   {
     name: "restrictedActivity",
@@ -381,6 +393,7 @@ const fields = [
       md: 6,
     },
     component: "TextField",
+    type: "number",
   },
   {
     name: "howDidInjuryHappen",
@@ -709,7 +722,7 @@ const fields = [
     label: "Famiily History",
   },
   {
-    name: "familyHistory.familyMemberSufferWithSameCondition",
+    name: "familyMemberSufferWithSameCondition",
     label: "Anybody in your family with same conditions?",
     helperText: "Does anyone in your family suffer with the same condition(s)?",
     items: [
@@ -721,9 +734,10 @@ const fields = [
       md: 6,
     },
     component: "Select",
+    required: true,
   },
   {
-    name: "familyHistory.familyMemberWithSameCondition",
+    name: "familyMemberWithSameCondition",
     label: "If yes whom?",
     items: [
       { key: "Grandmother", value: "grandmother" },
@@ -742,7 +756,7 @@ const fields = [
     component: "Select",
   },
   {
-    name: "familyHistory.familyMemberEverBeenTreated",
+    name: "familyMemberEverBeenTreated",
     label: "Have they ever been treated for their condition?",
     items: [
       { key: "No", value: false },
@@ -754,10 +768,11 @@ const fields = [
       md: 6,
     },
     component: "Select",
+    required: true,
   },
   {
-    name: "familyHistory.hereditaryConditions",
-    label: "Any other hereditary conditions?",
+    name: "hereditaryConditions",
+    label: "List any other hereditary conditions?",
     helperText: "Any other hereditary conditions the doctor should be aware of?",
     size: {
       xs: 12,

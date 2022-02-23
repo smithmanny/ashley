@@ -1,80 +1,51 @@
-import React, { useState } from "react"
+import React from "react"
 import { useForm, useFormState } from "react-final-form"
+import { useFieldArray } from "react-final-form-arrays"
 
 import Grid from "app/core/components/shared/Grid"
 import Button from "app/core/components/shared/Button"
 import Typography from "app/core/components/shared/Typography"
-import Table from "app/core/components/shared/Table"
-import { Checkbox, DatePicker, Select, TextField } from "app/core/components/form"
-
-const ListOfDependents = ({ dependents }) => (
-  <React.Fragment>
-    <Typography variant="h6" sx={{ mb: 2 }}>
-      <b>Dependents</b>
-    </Typography>
-    <Table headers={["Name", "D.O.B", "Relationship"]} rows={dependents} />
-  </React.Fragment>
-)
+import { DatePicker, TextField } from "app/core/components/form"
 
 const Dependents = () => {
-  const form = useForm()
   const formState = useFormState()
   const values = formState.values
-  const [dependents, addDependent] = useState<any>([])
+  const fields = useFieldArray("dependents").fields
 
   if (!values?.anyDependentsCovered) {
     return null
   }
+
   return (
     <Grid item container spacing={2}>
-      {dependents.length > 0 && (
-        <Grid item xs={12}>
-          <ListOfDependents dependents={dependents} />
+      <Grid item xs={12}>
+        <Typography variant="h6" sx={{ mb: 2 }}>
+          <b>Dependents</b>
+        </Typography>
+      </Grid>
+      {fields.map((name, index) => (
+        <Grid sx={{ position: "relative" }} item container spacing={2} key={index}>
+          <span
+            style={{ position: "absolute", left: 0, cursor: "pointer" }}
+            onClick={() => fields.remove(index)}
+          >
+            X
+          </span>
+          <TextField name={`${name}.name`} label="Dependent Name" xs={12} />
+          <DatePicker
+            name={`${name}.birthDate`}
+            label="Dependent D.O.B"
+            format="MMMM d, yyyy"
+            disableFuture
+            xs={12}
+            md={6}
+          />
+          <TextField name={`${name}.relationship`} label="Dependent Relationship" xs={12} md={6} />
         </Grid>
-      )}
-
-      <TextField name="dependent.name" label="Dependent Name" xs={12} />
-
-      <DatePicker
-        name="dependent.birthDate"
-        label="Dependent D.O.B"
-        format="MMMM d, yyyy"
-        disableFuture
-        xs={12}
-        md={6}
-      />
-
-      <TextField name="dependent.relationship" label="Dependent Relationship" xs={12} md={6} />
+      ))}
 
       <Grid item xs={12} md={6}>
-        <Button
-          disabled={
-            !values.dependent?.name ||
-            !values.dependent?.birthDate ||
-            !values.dependent?.relationship
-          }
-          onClick={() => {
-            function clearFields() {
-              form.change("dependent.name", "")
-              form.change("dependent.birthDate", "")
-              form.change("dependent.relationship", "")
-            }
-
-            return new Promise((resolve, reject) => {
-              resolve(
-                addDependent([
-                  ...dependents,
-                  {
-                    name: values.dependent.name,
-                    birthDate: values.dependent.birthDate.toDateString(),
-                    relationship: values.dependent.relationship,
-                  },
-                ])
-              )
-            }).then(clearFields)
-          }}
-          variant="contained"
-        >
+        <Button onClick={() => fields.push(undefined)} variant="contained">
           Add Dependent
         </Button>
       </Grid>
